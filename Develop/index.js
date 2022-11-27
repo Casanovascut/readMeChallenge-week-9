@@ -27,12 +27,12 @@ const promptUser = () => {
     },
         {
         type:'input',
-        name: 'Usage',
+        name: 'usage',
         message: 'What is the usage of this application?'
     },
         {
         type:'input',
-        name: 'Liscense',
+        name: 'liscense',
         message: 'please include any liscences'
     },
         {
@@ -47,7 +47,7 @@ const promptUser = () => {
     },
         {
         type:'input',
-        name: 'githubUsername',
+        name: 'github',
         message: 'what is your git hub username?'
     },
         {
@@ -59,10 +59,47 @@ const promptUser = () => {
 }
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+const generateReadme = ({projectName,description,tableOfContents,installation,usage,liscense,contributing,tests,github,email}) =>
+`#${projectName}
+## Liscencing
+${liscense}
+
+## Description
+
+${description}
+
+## Table of Contents
+
+${tableOfContents}
+
+## Installation
+
+${installation}
+
+## Usage
+
+${usage}
+
+## Instructions for contribution
+${contributing}
+
+## Testing Instructions
+
+${tests}
+
+## Contact
+
+${github}
+${email}
+`
 
 // TODO: Create a function to initialize app
-function init() {}
+const init = () => {
+    promptUser()
+        .then((answers)=> writeFile('readme.md', generateReadme(answers)))
+        .then(()=>console.log('succesfully wrote to reame.md'))
+        .catch((err) => console.error(err));
+}  
 
 // Function call to initialize app
 init();
