@@ -17,11 +17,6 @@ const promptUser = () => {
     },
         {
         type:'input',
-        name: 'tableOfContents',
-        message: 'Specify a table of contents for easier navigation'
-    },
-        {
-        type:'input',
         name: 'installation',
         message: 'What are the installation instructions?'
     },
@@ -31,9 +26,10 @@ const promptUser = () => {
         message: 'What is the usage of this application?'
     },
         {
-        type:'input',
+        type:'list',
         name: 'liscense',
-        message: 'please include any liscences'
+        message: 'please select liscence from list',
+        choices: ''
     },
         {
         type:'input',
@@ -59,18 +55,26 @@ const promptUser = () => {
 }
 
 // TODO: Create a function to write README file
-const generateReadme = ({projectName,description,tableOfContents,installation,usage,liscense,contributing,tests,github,email}) =>
-`#${projectName}
-## Liscencing
-${liscense}
+const generateReadme = ({projectName,description,installation,usage,liscense,contributing,tests,github,email}) =>
+`# ${projectName} ${liscense}
+
+## Table of Contents
+
+* [Description](#description)
+
+* [Installation](#installation)
+
+* [Usage](#usage)
+
+* [Contributing](#contributing)
+
+* [Testing](#testing)
+
+* [Contact](#contact)
 
 ## Description
 
 ${description}
-
-## Table of Contents
-
-${tableOfContents}
 
 ## Installation
 
@@ -80,10 +84,10 @@ ${installation}
 
 ${usage}
 
-## Instructions for contribution
+## contributing
 ${contributing}
 
-## Testing Instructions
+## Testing
 
 ${tests}
 
@@ -96,10 +100,11 @@ ${email}
 // TODO: Create a function to initialize app
 const init = () => {
     promptUser()
-        .then((answers)=> writeFile('readme.md', generateReadme(answers)))
+        .then((answers)=> writeFile('example.md', generateReadme(answers)))
         .then(()=>console.log('succesfully wrote to reame.md'))
         .catch((err) => console.error(err));
 }  
 
 // Function call to initialize app
 init();
+
