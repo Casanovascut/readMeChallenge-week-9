@@ -1,4 +1,4 @@
-# name
+# readme generator
 
 ## Table of Contents
 
@@ -18,27 +18,27 @@
 
 ## Description
 
-description is this
+this project will use the command line to help a fellow developer generate a proffesional readme file
 
 ## License
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+None
 
 ## Installation
 
-step 1
+please install node.js and inquire for this too work
 
 ## Usage
 
-to create read me
+this can be used by anyone
 
 ## contributing
-there are none
+no restricitons
 
 ## Testing
 
-these are instructions
+no instructions
 
 ## Contact
 
-casanovascut
-smcasanova17@hotamil.comn
+https://github.com/Casanovascut
+smcasanova17@hotmail.com
