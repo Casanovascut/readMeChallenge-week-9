@@ -1,4 +1,11 @@
 // TODO: Include packages needed for this application
+const Liscences = {
+    'MIT':'[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)', 
+    'APACHE 2.0':'[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)',
+    'GPL 3.0':'[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)',
+    'BSD 3':'[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)',
+    'None':'None'
+}
 const { writeFile } = require('fs').promises;
 const inquirer = require('inquirer')
 const generateMarkdown = require('./utils/generateMarkdown')
@@ -27,9 +34,9 @@ const promptUser = () => {
     },
         {
         type:'list',
-        name: 'liscense',
+        name: 'license',
         message: 'please select liscence from list',
-        choices: ''
+        choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None']
     },
         {
         type:'input',
@@ -55,12 +62,14 @@ const promptUser = () => {
 }
 
 // TODO: Create a function to write README file
-const generateReadme = ({projectName,description,installation,usage,liscense,contributing,tests,github,email}) =>
-`# ${projectName} ${liscense}
+const generateReadme = ({projectName,description,installation,usage,license,contributing,tests,github,email}) =>
+`# ${projectName}
 
 ## Table of Contents
 
 * [Description](#description)
+
+* [License](#license)
 
 * [Installation](#installation)
 
@@ -75,6 +84,9 @@ const generateReadme = ({projectName,description,installation,usage,liscense,con
 ## Description
 
 ${description}
+
+## License
+${Liscences[license]}
 
 ## Installation
 
@@ -100,8 +112,8 @@ ${email}
 // TODO: Create a function to initialize app
 const init = () => {
     promptUser()
-        .then((answers)=> writeFile('example.md', generateReadme(answers)))
-        .then(()=>console.log('succesfully wrote to reame.md'))
+        .then((answers)=> writeFile('readme.md', generateReadme(answers)))
+        .then(()=>console.log('succesfully wrote to readme.md'))
         .catch((err) => console.error(err));
 }  
 
