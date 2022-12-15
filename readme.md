@@ -31,6 +31,10 @@ please install node.js and inquire for this too work
 
 this can be used by anyone
 
+
+https://user-images.githubusercontent.com/112491490/207759275-a67c9fda-4276-4247-ac65-d4f9b0792c82.mp4
+
+
 ## contributing
 no restricitons
 
